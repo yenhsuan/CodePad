@@ -18,6 +18,7 @@ export default class AppState {
 
   @observable isBuilding = false
   @observable isBeakline = false
+  @observable editorFontSize = 12
 
   constructor() {
     this.auth = new Auth()

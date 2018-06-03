@@ -13,25 +13,25 @@ TEMP_BUILD_DIR = '%s/tmp' % CURRENT_DIR
 SOURCE_FILE_NAMES = {
     "java" : "Mycode.java",
     'python' : 'mycode.py',
-    'cpp' : 'mycode.cpp'
+    'c_cpp' : 'mycode.cpp'
 }
 
 BINARY_NAMES = {
     "java" : "Mycode",
     'python' : 'mycode.py',
-    'cpp' : 'a.out'
+    'c_cpp' : 'a.out'
 }
 
 BUILD_COMMANDS = {
     "java" : "javac",
-    "python" : "python",
-    "cpp" : "g++ -o a.out"
+    "python" : "python -u",
+    "c_cpp" : "g++ -o a.out"
 }
 
 EXECUTE_COMMANDS = {
     "java" : "java",
     "python" : "python",
-    "cpp" : "./"
+    "c_cpp" : "./"
 }
 
 def load_image():
@@ -80,7 +80,7 @@ def build_and_run(code, lang):
             command=tmp_var,
             volumes={source_file_host_dir: {'bind': source_file_guest_dir, 'mode': 'rw'}},
             working_dir=source_file_guest_dir)
-        print 'Executed!!!'
+        print log
         result['run'] = log
     except ContainerError as e:
         print 'Execution failed'

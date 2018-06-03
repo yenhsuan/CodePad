@@ -13,6 +13,7 @@ class Editor extends Component {
     const editor = this.props.appState.editor //eslint-disable-line
     this.props.appState.editor.setTheme('ace/theme/monokai')
     editor.setShowPrintMargin(false)
+    editor.setFontSize(this.props.appState.editorFontSize)
     editor.getSession().setMode('ace/mode/java')
   }
 

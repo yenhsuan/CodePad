@@ -12,4 +12,8 @@
     right: 20px !important;
     width: 50px;
   }
+
+  .sw {
+    display: none !important;
+  }
 }

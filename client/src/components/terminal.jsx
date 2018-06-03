@@ -15,7 +15,7 @@ const styles = {
     height: '100%',
     color: 'white',
     padding: '20px',
-    overflow: 'scroll',
+    overflow: 'auto',
   },
   title: {
     color: '#ffbb00',

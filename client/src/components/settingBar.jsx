@@ -22,6 +22,9 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import IconButton from '@material-ui/core/IconButton'
+import AddIcon from '@material-ui/icons/Add'
+import RemoveIcon from '@material-ui/icons/Remove'
 
 import TextField from '@material-ui/core/TextField'
 import classnames from 'classnames'
@@ -34,15 +37,13 @@ const defaultContent = {
 \t\t// Type your Java code here 
 \t} 
 }`,
-  c_cpp: `#include <iostream> 
-using namespace std; 
+  c_cpp: `#include <iostream>\n
+using namespace std;\n
 int main() { 
 \t// Type your C++ code here 
 \treturn 0; 
 }`,
-  python: `class Solution: 
-   def mycode(): 
-       # Write your Python code here`,
+  python: 'print "hello world!"',
 }
 
 const styles = theme => ({
@@ -106,6 +107,9 @@ const styles = theme => ({
   },
   switch: {
     'margin-left': '10px',
+  },
+  iconBtn: {
+    margin: theme.spacing.unit / 2,
   },
 })
 
@@ -306,15 +310,40 @@ class SettingBar extends Component {
               Reset
           </Button>
           <FormControlLabel
-            className={classes.switch}
+            className={classnames(classes.switch, 'sw')}
             control={
               <Switch
+                className="sw"
                 checked={this.props.appState.isBeakline}
                 onChange={() => { this.handleBreakLineSwitch() }}
               />
             }
             label="Break-line margin"
           />
+          <IconButton
+            className={classes.button}
+            onClick={() => {
+              if (this.props.appState.editorFontSize >= 30) {
+                return
+              }
+              this.props.appState.editorFontSize += 2
+              this.props.appState.editor.setFontSize(this.props.appState.editorFontSize)
+            }}
+          >
+            <AddIcon />
+          </IconButton>
+          <IconButton
+            className={classes.button}
+            onClick={() => {
+              if (this.props.appState.editorFontSize <= 2) {
+                return
+              }
+              this.props.appState.editorFontSize -= 2
+              this.props.appState.editor.setFontSize(this.props.appState.editorFontSize)
+            }}
+          >
+            <RemoveIcon />
+          </IconButton>
         </form>
         <div className={classnames(classes.buttons, 'co-btn')}>
           <Tooltip id="tooltip-fab-inv" title="Invite">

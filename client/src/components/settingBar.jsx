@@ -20,6 +20,9 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
+import Switch from '@material-ui/core/Switch'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+
 import TextField from '@material-ui/core/TextField'
 import classnames from 'classnames'
 import AppState from '../store/app-state'
@@ -101,6 +104,9 @@ const styles = theme => ({
     marginTop: -12,
     marginLeft: -12,
   },
+  switch: {
+    'margin-left': '10px',
+  },
 })
 
 
@@ -117,6 +123,11 @@ class SettingBar extends Component {
   handleDiagClose = () => {
     this.props.appState.modalOpen = false
     this.props.appState.isValidCode = false
+  }
+
+  handleBreakLineSwitch() {
+    this.props.appState.isBeakline = !this.props.appState.isBeakline
+    this.props.appState.editor.setShowPrintMargin(this.props.appState.isBeakline)
   }
 
   checkCode(event) {
@@ -294,6 +305,16 @@ class SettingBar extends Component {
           >
               Reset
           </Button>
+          <FormControlLabel
+            className={classes.switch}
+            control={
+              <Switch
+                checked={this.props.appState.isBeakline}
+                onChange={() => { this.handleBreakLineSwitch() }}
+              />
+            }
+            label="Break-line margin"
+          />
         </form>
         <div className={classnames(classes.buttons, 'co-btn')}>
           <Tooltip id="tooltip-fab-inv" title="Invite">

@@ -17,6 +17,7 @@ export default class AppState {
   @observable ssid = ''
 
   @observable isBuilding = false
+  @observable isBeakline = false
 
   constructor() {
     this.auth = new Auth()

@@ -11,7 +11,6 @@ export default class Auth {
     this.getProfile = this.getProfile.bind(this);
   }
 
-
   getProfile(cb) {
     const accessToken = this.getAccessToken();
     this.auth0.client.userInfo(accessToken, (err, profile) => {

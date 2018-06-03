@@ -68,7 +68,7 @@ const styles = theme => ({
   buttons: {
     position: 'fixed',
     right: '5px',
-    bottom: '20px',
+    bottom: '40px',
   },
   formBtn: {
     'margin-right': '5px',

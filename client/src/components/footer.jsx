@@ -8,8 +8,8 @@ const styles = {
   footer: {
     position: 'fixed',
     bottom: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
+    right: 0,
+    transform: 'translateX(-20%)',
     background: '#222',
     opacity: 0.8,
     color: '#f2f2f2',

@@ -8,10 +8,12 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
 import Avatar from '@material-ui/core/Avatar'
-import blueGrey from '@material-ui/core/colors/cyan';
+import blueGrey from '@material-ui/core/colors/cyan'
+import classnames from 'classnames'
 
 import logo from '../../brand.png'
 import { AppState } from '../store/app-state'
+import './navbar.css'
 
 const styles = () => ({
   root: {
@@ -68,7 +70,7 @@ class NavBar extends Component {
         <AppBar position="fixed">
           <Toolbar>
             <Avatar alt="logo" src={logo} className={classes.avatar} />
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography variant="title" color="inherit" className={classnames(classes.flex, 'brand')}>
               CodePad
             </Typography>
             {this.usersIcon()}

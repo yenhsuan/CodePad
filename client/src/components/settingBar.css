@@ -1,6 +1,14 @@
 @media (max-width: 600px) {
   .co-btn {
-    bottom: 50px !important;
+    bottom: 80px !important;
+    right: 20px !important;
+    width: 50px;
+  }
+}
+
+@media (max-width: 450px) {
+  .co-btn {
+    bottom: 100px !important;
     right: 20px !important;
     width: 50px;
   }

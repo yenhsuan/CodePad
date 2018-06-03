@@ -1,0 +1,5 @@
+@media (max-width:950px) {
+  .footer-mobile {
+    display: none;
+  }
+}

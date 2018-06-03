@@ -1,0 +1,7 @@
+@media (max-width: 600px) {
+  .co-btn {
+    bottom: 50px !important;
+    right: 20px !important;
+    width: 50px;
+  }
+}

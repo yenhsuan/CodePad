@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Codepad server",
+  "main": "codepad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yen-Hsuan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2",
+    "node-rest-client": "^3.1.0",
+    "redis": "^2.8.0",
+    "socket.io": "^2.1.1"
+  }
+}

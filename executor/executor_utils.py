@@ -2,9 +2,10 @@ import docker
 import os
 import shutil
 import uuid
+import time
 from docker.errors import *
 
-client = docker.from_env()
+client = docker.DockerClient()
 
 IMAGE_NAME = 'yenhsuan/coj'
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -34,6 +35,7 @@ EXECUTE_COMMANDS = {
     "c_cpp" : "./"
 }
 
+TIMEOUT_SETTING = 'timeout -s 2 5'
 def load_image():
     try:
         client.images.get(IMAGE_NAME)
@@ -72,21 +74,22 @@ def build_and_run(code, lang):
         return result
 
     try:
-        tmp_var='%s %s' % (EXECUTE_COMMANDS[lang], BINARY_NAMES[lang])
+        tmp_var='%s %s %s' % (TIMEOUT_SETTING, EXECUTE_COMMANDS[lang], BINARY_NAMES[lang])
+        print tmp_var
         if EXECUTE_COMMANDS[lang]=='./':
-            tmp_var='%s%s' % (EXECUTE_COMMANDS[lang], BINARY_NAMES[lang])
+            tmp_var='%s %s%s' % (TIMEOUT_SETTING, EXECUTE_COMMANDS[lang], BINARY_NAMES[lang])
         log = client.containers.run(
             image=IMAGE_NAME,
             command=tmp_var,
             volumes={source_file_host_dir: {'bind': source_file_guest_dir, 'mode': 'rw'}},
             working_dir=source_file_guest_dir)
-        print log
         result['run'] = log
     except ContainerError as e:
         print 'Execution failed'
-        result['run'] = e.stderr
+        result['run'] = '[!] Execution Failed - Timeout'
         shutil.rmtree(source_file_host_dir)
         return result
+    
 
     shutil.rmtree(source_file_host_dir)
     return result

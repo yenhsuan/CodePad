@@ -24,6 +24,8 @@ router.post('/build',jsonParser,(req,res)=>{
 			headers: {'Content-Type': 'application/json'}
 		},
 		(result, response) => {
+			console.log(result)
+
 			const text = `Build results:\n${result['build']}\n\nExecute output:\n${result['run']}\n\n\n\n`
 			const compiledResult = {}
 			compiledResult['run'] = result['run']
